@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* Add CSS styling for your lawyer dashboard here */
+        body {
+            font-family: 'Gluten', cursive;
+        }
+
+        .notification {
+            background-color: #343434e2;
+            color: #c4c4c4f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+        }
+        .notification p{
+            margin: auto;
+            padding: 5px;
+        }
+        .notification.hidden {
+            display: none;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding : 10px 0px;
+        }
+        .action-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .approve-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        .decline-button {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        .time-location-input {
+            display: none; /* Initially hide the time and location inputs */
+            width: auto;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Lawyer Dashboard</h1> -->
+    
+    <div class="notification hidden" id="appointment-notification">
+        <p>New Appointment Request:</p>
+        <p>Name: <span id="appointment-name"></span></p>
+        <p>Email: <span id="appointment-email"></span></p>
+        <p>Phone: <span id="appointment-phone"></span></p>
+        <p>Type of Lawyer Need: <span id="appointment-type"></span></p>
+        <div class="action-buttons">
+            <button class="action-button approve-button" onclick="showTimeLocationInputs()">Approve</button>
+            <button class="action-button decline-button" onclick="declineAppointment()">Decline</button>
+        </div>
+        <input type="time" class="time-location-input" id="appointment-time" placeholder="Appointment Time">
+        <input type="text" class="time-location-input" id="appointment-location" placeholder="Appointment Location">
+        <button class="action-button approve-button" id="confirm-time-location" onclick="approveAppointment()">Confirm</button>
+    </div>
+
+    <!-- JavaScript to handle the notification -->
+    <script>
+        // Function to receive and display appointment notification
+        function receiveAppointmentNotification(data) {
+            const notification = document.getElementById("appointment-notification");
+            const nameElement = document.getElementById("appointment-name");
+            const emailElement = document.getElementById("appointment-email");
+            const phoneElement = document.getElementById("appointment-phone");
+            const typeElement = document.getElementById("appointment-type");
+
+            nameElement.textContent = data.name;
+            emailElement.textContent = data.email;
+            phoneElement.textContent = data.phone;
+            typeElement.textContent = data.type;
+
+            notification.classList.remove("hidden");
+        }
+
+        // Function to show the time and location inputs when approving
+        function showTimeLocationInputs() {
+            const timeInput = document.getElementById("appointment-time");
+            const locationInput = document.getElementById("appointment-location");
+            const confirmButton = document.getElementById("confirm-time-location");
+
+            timeInput.style.display = "block";
+            locationInput.style.display = "block";
+            confirmButton.style.display = "block";
+        }
+
+        // Function to handle "Approve" button click
+        function approveAppointment() {
+            const timeInput = document.getElementById("appointment-time");
+            const locationInput = document.getElementById("appointment-location");
+            const selectedTime = timeInput.value;
+            const selectedLocation = locationInput.value;
+
+            if (!selectedTime || !selectedLocation) {
+                alert("Please select both a time and a location for the appointment.");
+                return;
+            }
+
+            alert(`Appointment Approved for ${selectedTime} at ${selectedLocation}`); // Replace with your approval logic
+
+            // Optionally, you can send the selectedTime and selectedLocation to the server along with other appointment details.
+        }
+
+        // Function to handle "Decline" button click
+        function declineAppointment() {
+            alert("Appointment Declined"); // Replace with your decline logic
+        }
+
+        // Simulate receiving an appointment notification
+        const sampleAppointment = {
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "(123) 456-7890",
+            type: "Family Law",
+        };
+
+        // Call receiveAppointmentNotification with the appointment data
+        receiveAppointmentNotification(sampleAppointment);
+    </script>
+</body>
+</html>

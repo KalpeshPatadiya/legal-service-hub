@@ -1,0 +1,93 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gluten', cursive;
+    
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #1e90ff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the profile section */
+.profile {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    border: 5px solid   #1e90ff;
+    border-radius: 10px;
+    display: flex;
+}
+
+/* Style the profile image */
+.profile-image img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 20px;
+    text-align: center;
+    /* border:3px solid #1e90ff; */
+}
+
+/* Style the profile details */
+.profile-details h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style the list of profile details */
+.profile-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style each detail item */
+.profile-details ul li {
+    margin-bottom: 10px;
+}
+
+/* Style the links to certificates */
+.profile-details ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style the footer */
+footer {
+    background-color: #1e90ff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+/*  */
+/*  */
+
+
+.btn {
+    padding: 10px 20px;
+    background-color: #1e90ff; /* Button color for a lawyer profile */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.icon {
+    margin-right: 5px;
+}
